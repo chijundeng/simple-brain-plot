@@ -5,7 +5,7 @@
 package. It creates simple line-art SVG brain plots, coloring each region
 of a chosen atlas according to a value and colormap you provide.
 
-![atlases overview](https://github.com/dutchconnectomelab/Simple-Brain-Plot/raw/main/atlases_overview.png)
+![atlases overview](examples/examples.png)
 
 ## Atlases available
 
@@ -19,13 +19,8 @@ of a chosen atlas according to a value and colormap you provide.
 ## Installation
 
 ```bash
+cd simple-brain-plot
 pip install .
-```
-
-(from a checkout of this directory) or, once published:
-
-```bash
-pip install simple-brain-plot
 ```
 
 ## Usage
