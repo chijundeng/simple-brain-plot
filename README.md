@@ -67,39 +67,19 @@ for atlas in sbp.list_atlases():
     )
 ```
 
-`plot_brain` returns a `PlotBrainResult` with:
-
-- `svg_path`: path to the generated, self-contained `.svg` file (the
-  colorbar is embedded as a base64 data URI — no external files needed).
-- `svg`: the SVG markup itself, so it also renders inline in Jupyter.
-
-### API
-
-```
-plot_brain(regions, values, cmap="RdBu_r", *, atlas="aparc",
-           limits=None, scaling=0.1, save_path=None, viewer=False)
-```
-
-| Argument     | Description |
-|--------------|-------------|
-| `regions`    | Sequence of region names (see `list_regions(atlas)`) |
-| `values`     | Numeric values, one per region |
-| `cmap`       | Matplotlib colormap name / `Colormap` object |
-| `atlas`      | One of the atlas names listed above (default `"aparc"`) |
-| `limits`     | `(vmin, vmax)`; defaults to `(min(values), max(values))` |
-| `scaling`    | Output SVG scale factor, `0 < scaling <= 1` |
-| `save_path`  | Output path; a temp file is used if omitted |
-| `viewer`     | Open the result in your default browser (default `False`) |
-
-`list_atlases()` and `list_regions(atlas)` are also exported as helpers.
-
 ### Matplotlib figure output (`plot_brain_figure`)
 
-If you'd rather get back a Matplotlib `Figure` you can style further and
-save with `fig.savefig(...)`, use `plot_brain_figure` instead of
-`plot_brain`. It rasterizes the brain artwork and draws a real Matplotlib
-colorbar next to it (size- and font-adjustable), rather than baking a
-colorbar image into the SVG.
+If you'd rather get back a Matplotlib `Figure`, use `plot_brain_figure`. It rasterizes the brain artwork and draws a real Matplotlib
+colorbar next to it (size- and font-adjustable), rather than baking a colorbar image into the SVG.
+
+`plot_brain_figure` requires `cairosvg` dependency for rasterizing SVG artwork.
+If the automatic installation fails, you can install it manually via conda:
+
+```bash
+conda install cairosvg
+```
+
+Example code for `plot_brain_figure`:
 
 ```python
 import numpy as np
@@ -122,13 +102,6 @@ fig = sbp.plot_brain_figure(
 )
 ```
 
-`plot_brain_figure` requires the optional `cairosvg` dependency to
-rasterize the SVG artwork:
-
-```bash
-conda install cairosvg
-```
-
 Key colorbar sizing/styling arguments (all keyword-only):
 
 | Argument              | Description                                            | Default       |
@@ -142,15 +115,32 @@ Key colorbar sizing/styling arguments (all keyword-only):
 | `colorbar_label`      | Optional text label drawn alongside the colorbar        | `None`        |
 | `save_path`           | Path to save the figure. If None, nothing saved         | `None`        |
 
-## Differences from the MATLAB version
 
-- Pure Python/NumPy/Matplotlib, no MATLAB required.
-- Accepts any Matplotlib colormap by name, in addition to explicit RGB
-  matrices.
-- The generated SVG embeds its colorbar as a base64 data URI instead of
-  referencing an external PNG file, so the output is a single portable file.
-- `viewer=True` opens the SVG with the standard library's `webbrowser`
-  module.
+### Browser output (`plot_brain`)
+If you prefer to view the figure directly in your default SVG browser, use `plot_brain` instead.
+
+```
+plot_brain(regions, values, cmap="RdBu_r", *, atlas="aparc",
+           limits=None, scaling=0.1, save_path=None, viewer=False)
+```
+
+| Argument     | Description |
+|--------------|-------------|
+| `regions`    | Sequence of region names (see `list_regions(atlas)`) |
+| `values`     | Numeric values, one per region |
+| `cmap`       | Matplotlib colormap name / `Colormap` object |
+| `atlas`      | One of the atlas names listed above (default `"aparc"`) |
+| `limits`     | `(vmin, vmax)`; defaults to `(min(values), max(values))` |
+| `scaling`    | Output SVG scale factor, `0 < scaling <= 1` (default 0.1) |
+| `save_path`  | Output path; a temp file is used if omitted |
+| `viewer`     | Open the result in your default browser (default `False`) |
+
+`list_atlases()` and `list_regions(atlas)` are also exported as helpers.
+`plot_brain` returns a `PlotBrainResult` with:
+
+- `svg_path`: path to the generated, self-contained `.svg` file (the
+  colorbar is embedded as a base64 data URI — no external files needed).
+- `svg`: the SVG markup itself, so it also renders inline in Jupyter.
 
 ## References
 
@@ -166,7 +156,7 @@ Key colorbar sizing/styling arguments (all keyword-only):
 
 [6] Walker EA. A cytoarchitectural study of the prefrontal area of the macaque monkey. *J Comp Neurol*, 73:59–86, 1940.
 
-## Attribution
+## Acknowledgments
 
 This package is a Python port that bundles the atlas artwork and region
 definitions from the original MATLAB project. If you use it in your
@@ -176,5 +166,3 @@ research, please cite the original work:
 > 2021. "Simple Brain Plot". Zenodo. https://doi.org/10.5281/zenodo.5346593
 
 Original repository: https://github.com/dutchconnectomelab/Simple-Brain-Plot
-
-See `LICENSE` for licensing details of this Python port.
