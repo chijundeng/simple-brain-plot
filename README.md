@@ -45,7 +45,7 @@ for atlas in sbp.list_atlases():
         values,
         cmap=cmap,
         atlas=atlas,
-        save_path=f"{OUT_DIR}/{atlas}.png",
+        save_path=f"{OUT_DIR}/{atlas}.svg",
     )
 
 ## Option 2
