@@ -33,6 +33,7 @@ OUT_DIR = "figures"
 
 # Colormap for brain regions. Any matplotlib colormap is accepted.
 # 'RdBu_r', 'Spectral_r', 'viridis', 'plasma', etc.
+
 # Custom colormaps
 cmap = sbp.common_cmap('c2')  # c1-12 are custom colormaps
 
