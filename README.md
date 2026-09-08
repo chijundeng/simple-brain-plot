@@ -127,7 +127,7 @@ fig.savefig("figures/example.png", dpi=300, bbox_inches="tight")
 rasterize the SVG artwork:
 
 ```bash
-pip install simple-brain-plot[figure]
+conda install cairosvg
 ```
 
 Key colorbar sizing/styling arguments (all keyword-only):
