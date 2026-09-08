@@ -131,7 +131,7 @@ plot_brain(regions, values, cmap="RdBu_r", *, atlas="aparc",
 | `cmap`       | Matplotlib colormap name / `Colormap` object |
 | `atlas`      | One of the atlas names listed above (default `"aparc"`) |
 | `limits`     | `(vmin, vmax)`; defaults to `(min(values), max(values))` |
-| `scaling`    | Output SVG scale factor, `0 < scaling <= 1` (default 0.1) |
+| `scaling`    | Output SVG scale factor, `0 < scaling <= 1` (default `0.1`) |
 | `save_path`  | Output path; a temp file is used if omitted |
 | `viewer`     | Open the result in your default browser (default `False`) |
 
@@ -164,5 +164,3 @@ research, please cite the original work:
 
 > Scholtens, Lianne H, de Lange, Siemon C, and van den Heuvel, Martijn P.
 > 2021. "Simple Brain Plot". Zenodo. https://doi.org/10.5281/zenodo.5346593
-
-Original repository: https://github.com/dutchconnectomelab/Simple-Brain-Plot
