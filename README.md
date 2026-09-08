@@ -31,9 +31,12 @@ import simple_brain_plot as sbp
 
 OUT_DIR = "figures"
 
-# Colormap for brain regions. Any matplotlib colormap name is accepted.
-# Common choices: 'RdBu_r', 'Spectral_r', 'viridis', 'plasma', etc.
+# Colormap for brain regions. Any matplotlib colormap is accepted like 'RdBu_r', 'Spectral_r', 'viridis', 'plasma', etc.
+# Custom colormaps
 cmap = sbp.common_cmap('c2')  # c1-12 are custom colormaps
+
+# Custom three point colormap
+# cmap = sbp.three_point_cmap(cool="#79C", mid="white", warm="#b85d4a") 
 
 ## Option 1
 for atlas in sbp.list_atlases():
