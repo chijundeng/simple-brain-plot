@@ -76,7 +76,7 @@ for atlas in sbp.list_atlases():
 ### API
 
 ```
-plot_brain(regions, values, cmap="RdBu_r", *, atlas="lausanne120",
+plot_brain(regions, values, cmap="RdBu_r", *, atlas="aparc",
            limits=None, scaling=0.1, save_path=None, viewer=False)
 ```
 
@@ -85,7 +85,7 @@ plot_brain(regions, values, cmap="RdBu_r", *, atlas="lausanne120",
 | `regions`    | Sequence of region names (see `list_regions(atlas)`) |
 | `values`     | Numeric values, one per region |
 | `cmap`       | Matplotlib colormap name / `Colormap` object |
-| `atlas`      | One of the atlas names listed above (default `"lausanne120"`) |
+| `atlas`      | One of the atlas names listed above (default `"aparc"`) |
 | `limits`     | `(vmin, vmax)`; defaults to `(min(values), max(values))` |
 | `scaling`    | Output SVG scale factor, `0 < scaling <= 1` |
 | `save_path`  | Output path; a temp file is used if omitted |
@@ -120,7 +120,6 @@ fig = sbp.plot_brain_figure(
     colorbar_fontfamily="Helvetica",
     savepath="/figure/test.svg"
 )
-# fig.savefig("figures/example.png", dpi=300, bbox_inches="tight")
 ```
 
 `plot_brain_figure` requires the optional `cairosvg` dependency to
