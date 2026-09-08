@@ -1,0 +1,2 @@
+recursive-include src/simple_brain_plot/atlases *.svg
+recursive-include src/simple_brain_plot/data *.json

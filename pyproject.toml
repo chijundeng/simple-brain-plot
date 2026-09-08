@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simple-brain-plot"
+version = "1.1.0"
+description = "Simple line-art brain plots, in pure Python (port of the Simple-Brain-Plot MATLAB package)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Python port maintainer" },
+]
+keywords = ["neuroscience", "brain", "connectome", "atlas", "visualization", "svg"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Intended Audience :: Science/Research",
+]
+dependencies = [
+    "numpy>=1.20",
+    "matplotlib>=3.4",
+    "cairosvg>=2.5"
+]
+
+[project.optional-dependencies]
+figure = ["cairosvg>=2.5"]
+dev = ["pytest", "cairosvg>=2.5"]
+
+[project.urls]
+Homepage = "https://github.com/dutchconnectomelab/Simple-Brain-Plot"
+"Original MATLAB package" = "https://github.com/dutchconnectomelab/Simple-Brain-Plot"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+simple_brain_plot = ["atlases/*.svg", "data/*.json"]
